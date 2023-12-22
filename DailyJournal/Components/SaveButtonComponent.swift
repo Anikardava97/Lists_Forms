@@ -16,7 +16,7 @@ struct SaveButtonComponent: View {
     var body: some View {
         Button(action: action) {
             Text(text)
-                .foregroundColor(foregroundColor)
+                .foregroundColor(isDisabled ? .gray : foregroundColor) 
                 .fontWeight(.medium)
                 .padding(.horizontal, 12)
         }

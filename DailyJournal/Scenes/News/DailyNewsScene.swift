@@ -70,29 +70,25 @@ struct DailyNewsScene: View {
     
     private var newsListView: some View {
         List {
-            newsListContent
-        }
-    }
-    
-    private var newsListContent: some View {
-        ForEach(viewModel.newsItems.indices, id: \.self) { index in
-            NavigationLink(value: index) {
-                NewsItemRow(item: viewModel.newsItems[index])
+            ForEach(viewModel.newsItems.indices, id: \.self) { index in
+                NavigationLink(value: index) {
+                    NewsItemRow(item: viewModel.newsItems[index])
+                }
+                .navigationDestination(for: Int.self) { index in
+                    EditNewsScene(path: $path, newsItemIndex: index)
+                }
             }
-        }
-        .onDelete(perform: viewModel.deleteNews)
-        .onMove(perform: viewModel.moveNews)
-        .navigationDestination(for: Int.self) { index in
-            EditNewsScene(path: $path, newsItemIndex: index)
+            .onDelete(perform: viewModel.deleteNews)
+            .onMove(perform: viewModel.moveNews)
         }
     }
     
     private var saveButton: some View {
-        SaveButtonComponent(action: {
-            viewModel.saveNews()
-        }, text: "Save",
-                            foregroundColor: Color.customAccentColor,
-                            isDisabled: !viewModel.textIsInserted())
+        SaveButtonComponent(
+            action: viewModel.saveNews,
+            text: "Save",
+            foregroundColor: Color.customAccentColor,
+            isDisabled: !viewModel.textIsInserted())
     }
     
     private var editButton: some View {
