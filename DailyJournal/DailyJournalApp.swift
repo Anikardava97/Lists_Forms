@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DailyJournalApp: App {
+    @StateObject var viewModel = DailyNewsViewModel()
+    
     var body: some Scene {
         WindowGroup {
             DailyNewsScene()
+                .environmentObject(viewModel)
         }
     }
 }

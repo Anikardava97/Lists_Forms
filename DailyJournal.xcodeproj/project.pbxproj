@@ -13,6 +13,14 @@
 		EE07B4312B3442120076C4EE /* DailyNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B4302B3442110076C4EE /* DailyNewsScene.swift */; };
 		EE07B4362B3453920076C4EE /* NewsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B4352B3453920076C4EE /* NewsItemModel.swift */; };
 		EE07B43C2B3460310076C4EE /* DailyNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B43B2B3460310076C4EE /* DailyNewsViewModel.swift */; };
+		EE07B4452B3500100076C4EE /* EditNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B4442B3500100076C4EE /* EditNewsScene.swift */; };
+		EEC0386A2B350B8800345E53 /* DatePickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC038692B350B8800345E53 /* DatePickerComponent.swift */; };
+		EEC0386C2B350BAF00345E53 /* TitleTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC0386B2B350BAF00345E53 /* TitleTextFieldComponent.swift */; };
+		EEC0386E2B350BCC00345E53 /* NewsTextEditorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC0386D2B350BCC00345E53 /* NewsTextEditorComponent.swift */; };
+		EEC038712B350D4E00345E53 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC038702B350D4E00345E53 /* ColorExtension.swift */; };
+		EEC038762B35100E00345E53 /* SaveButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC038752B35100E00345E53 /* SaveButtonComponent.swift */; };
+		EEC038782B35162F00345E53 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC038772B35162F00345E53 /* CustomBackButton.swift */; };
+		EEC0387A2B352A7400345E53 /* NewsItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC038792B352A7400345E53 /* NewsItemRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +31,14 @@
 		EE07B4302B3442110076C4EE /* DailyNewsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNewsScene.swift; sourceTree = "<group>"; };
 		EE07B4352B3453920076C4EE /* NewsItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemModel.swift; sourceTree = "<group>"; };
 		EE07B43B2B3460310076C4EE /* DailyNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNewsViewModel.swift; sourceTree = "<group>"; };
+		EE07B4442B3500100076C4EE /* EditNewsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNewsScene.swift; sourceTree = "<group>"; };
+		EEC038692B350B8800345E53 /* DatePickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerComponent.swift; sourceTree = "<group>"; };
+		EEC0386B2B350BAF00345E53 /* TitleTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldComponent.swift; sourceTree = "<group>"; };
+		EEC0386D2B350BCC00345E53 /* NewsTextEditorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextEditorComponent.swift; sourceTree = "<group>"; };
+		EEC038702B350D4E00345E53 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		EEC038752B35100E00345E53 /* SaveButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonComponent.swift; sourceTree = "<group>"; };
+		EEC038772B35162F00345E53 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		EEC038792B352A7400345E53 /* NewsItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,8 @@
 				EE07B4222B3441F90076C4EE /* DailyJournalApp.swift */,
 				EE07B4372B3453DD0076C4EE /* Model */,
 				EE07B4322B34421F0076C4EE /* Scenes */,
+				EEC038682B350B7600345E53 /* Components */,
+				EEC038742B350E7200345E53 /* Extensions */,
 				EE07B4262B3441FC0076C4EE /* Assets.xcassets */,
 				EE07B4282B3441FC0076C4EE /* Preview Content */,
 			);
@@ -76,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				EE07B4382B3453EB0076C4EE /* News */,
+				EEC0386F2B350CE500345E53 /* Edit */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -95,6 +114,35 @@
 				EE07B43B2B3460310076C4EE /* DailyNewsViewModel.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		EEC038682B350B7600345E53 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EEC038792B352A7400345E53 /* NewsItemRow.swift */,
+				EEC0386B2B350BAF00345E53 /* TitleTextFieldComponent.swift */,
+				EEC0386D2B350BCC00345E53 /* NewsTextEditorComponent.swift */,
+				EEC038692B350B8800345E53 /* DatePickerComponent.swift */,
+				EEC038752B35100E00345E53 /* SaveButtonComponent.swift */,
+				EEC038772B35162F00345E53 /* CustomBackButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EEC0386F2B350CE500345E53 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				EE07B4442B3500100076C4EE /* EditNewsScene.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		EEC038742B350E7200345E53 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EEC038702B350D4E00345E53 /* ColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,8 +217,16 @@
 			files = (
 				EE07B4362B3453920076C4EE /* NewsItemModel.swift in Sources */,
 				EE07B4232B3441F90076C4EE /* DailyJournalApp.swift in Sources */,
+				EEC0386C2B350BAF00345E53 /* TitleTextFieldComponent.swift in Sources */,
+				EEC038712B350D4E00345E53 /* ColorExtension.swift in Sources */,
+				EEC0387A2B352A7400345E53 /* NewsItemRow.swift in Sources */,
+				EEC0386A2B350B8800345E53 /* DatePickerComponent.swift in Sources */,
 				EE07B4312B3442120076C4EE /* DailyNewsScene.swift in Sources */,
+				EEC0386E2B350BCC00345E53 /* NewsTextEditorComponent.swift in Sources */,
 				EE07B43C2B3460310076C4EE /* DailyNewsViewModel.swift in Sources */,
+				EEC038762B35100E00345E53 /* SaveButtonComponent.swift in Sources */,
+				EEC038782B35162F00345E53 /* CustomBackButton.swift in Sources */,
+				EE07B4452B3500100076C4EE /* EditNewsScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

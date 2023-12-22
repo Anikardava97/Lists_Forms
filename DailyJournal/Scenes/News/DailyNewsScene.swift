@@ -10,16 +10,13 @@ import SwiftUI
 struct DailyNewsScene: View {
     
     // MARK: - Properties
-    @StateObject private var viewModel = DailyNewsViewModel()
-    
-    private var accentColor = Color(red: 228/255, green: 175/255, blue: 9/255)
+    @EnvironmentObject var viewModel: DailyNewsViewModel
+    @State var path = NavigationPath()
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             content
-                .navigationTitle("News List")
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) { saveButton }
                     ToolbarItem(placement: .topBarLeading) { editButton }
@@ -28,77 +25,91 @@ struct DailyNewsScene: View {
     }
     // MARK: - Subviews
     private var content: some View {
-        VStack {
+        VStack(spacing: 0) {
             form
-            
-            if viewModel.newsItems.isEmpty {
-                emptyStateView
-            } else {
-                newsListView
-            }
         }
+        .background(Color.clear)
     }
     
     private var form: some View {
         Form {
-            Section {
-                TextField("Title", text: $viewModel.newsTitleTextField)
-                TextEditor(text: $viewModel.newsTextEditor)
-                    .frame(height: 100)
-                DatePicker("Date", selection: $viewModel.newsDate, displayedComponents: .date)
-            } header: {
-                Text("News")
-            }
+            formSection
+            newsListSection
         }
-        .tint(accentColor)
+        .tint(Color.customAccentColor)
+        .background(.gray.opacity(0.1))
+        .scrollContentBackground(.hidden)
+    }
+    
+    private var formSection: some View {
+        Section {
+            TitleTextFieldComponent(text: $viewModel.newsTitleTextField, color: Color.customTitleFieldColor)
+            NewsTextEditorComponent(text:  $viewModel.newsTextEditor, color: Color.customFormBackgroundColor)
+            DatePickerComponent(selectedDate: $viewModel.newsDate, startingDate: viewModel.startingDate, endingDate: viewModel.endingDate, color: Color.customFormBackgroundColor)
+        } header: {
+            Text("News")
+        }
+    }
+    
+    private var newsListSection: some View {
+        Section {
+            if viewModel.isNewsItemsEmpty {
+                emptyStateView
+            } else {
+                newsListView
+            }
+        } header: {
+            Text("News List")
+        }
     }
     
     private var emptyStateView: some View {
         Text("No News Added Yet")
-            .foregroundStyle(accentColor)
+            .foregroundStyle(Color.customAccentColor)
     }
     
     private var newsListView: some View {
         List {
-            ForEach(viewModel.newsItems, id: \.title) { item in
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Text(item.title)
-                            .font(.system(size: 24, weight: .medium))
-                        
-                        Spacer()
-                        
-                        Image(systemName: "calendar")
-                            .foregroundStyle(accentColor)
-                        Text(viewModel.dateFormatter.string(from: item.date))
-                    }
-                    Text(item.content)
-                }
+            newsListContent
+        }
+    }
+    
+    private var newsListContent: some View {
+        ForEach(viewModel.newsItems.indices, id: \.self) { index in
+            NavigationLink(value: index) {
+                NewsItemRow(item: viewModel.newsItems[index])
             }
-            .onDelete(perform: viewModel.deleteNews)
-            .onMove(perform: viewModel.moveNews)
+        }
+        .onDelete(perform: viewModel.deleteNews)
+        .onMove(perform: viewModel.moveNews)
+        .navigationDestination(for: Int.self) { index in
+            EditNewsScene(path: $path, newsItemIndex: index)
         }
     }
     
     private var saveButton: some View {
-        Button(action: {
+        SaveButtonComponent(action: {
             viewModel.saveNews()
-        }, label: {
-            Text("Save".uppercased())
-                .foregroundColor(viewModel.textIsInserted() ? accentColor : Color.gray )
-                .fontWeight(.medium)
-                .padding(.horizontal, 12)
-        })
-        .disabled(!viewModel.textIsInserted())
+        }, text: "Save",
+                            foregroundColor: Color.customAccentColor,
+                            isDisabled: !viewModel.textIsInserted())
     }
     
     private var editButton: some View {
         EditButton()
             .padding(.horizontal, 12)
-            .foregroundStyle(accentColor)
+            .foregroundStyle(Color.customAccentColor)
+            .onTapGesture {
+                viewModel.isEditingSheetPresented.toggle()
+            }
     }
 }
 
 #Preview {
     DailyNewsScene()
+        .environmentObject(DailyNewsViewModel())
 }
+
+
+
+

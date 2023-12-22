@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewsItem {
+struct NewsItem: Hashable {
     var title: String
     var content: String
     var date: Date

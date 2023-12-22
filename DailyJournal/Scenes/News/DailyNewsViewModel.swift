@@ -14,11 +14,18 @@ final class DailyNewsViewModel: ObservableObject {
     @Published var newsTextEditor = ""
     @Published var newsDate = Date()
     @Published var newsItems: [NewsItem] = []
+    @Published var isEditingSheetPresented = false
+    let startingDate: Date = Calendar.current.startOfDay(for: Date())
+    let endingDate: Date = Calendar.current.date(byAdding: .year, value: 1, to: Date()) ?? Date()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         return formatter
+    }
+    
+    var isNewsItemsEmpty: Bool {
+        return newsItems.isEmpty
     }
     
     // MARK: - Functions
